@@ -298,7 +298,7 @@ class Main extends egret.DisplayObjectContainer {
 
         var introduc = new egret.TextField();
         this.addChild(introduc);
-        introduc.alpha = 0;
+        introduc.alpha = 1;
         introduc.textColor = 0xE0E0E0;
         introduc.textAlign = "left";
         introduc.text =  "         个人简介\n\n"
@@ -310,11 +310,18 @@ class Main extends egret.DisplayObjectContainer {
                         +"+ 微信：二糖(´◡`๑) "
         introduc.size = 30;
         introduc.x = 185;
-        introduc.y = 500;
+        introduc.y = 1500;
+
+        var empty = new egret.TextField();
+        empty.alpha = 0;
+        empty.textColor = 0xE0E0E0;
+        empty.textAlign = "left";
+        empty.text =  " "
 
         //点击滑入文字
         function IN(e: egret.TouchEvent): void {
-            egret.Tween.get(introduc).to( {x:180,y:270}, 300, egret.Ease.sineIn );
+            egret.Tween.get(introduc).to( {y:500}, 700, egret.Ease.backOut );
+            introduc.y = 500;
         }
 
         //第三页
@@ -367,7 +374,7 @@ class Main extends egret.DisplayObjectContainer {
 
         var Num = 2;
         var Array = [sky,sky2,sky3];
-        var Text = [Start, introduc, End];
+        var Text = [Start, empty, End];
         var Icon = [icon, icon2, icon3];
         var MASK = [Mask, Mask2, Mask3];
         this.TurnBitmap(Array, Num, Text, Icon, MASK);
